@@ -70,9 +70,9 @@ export class App extends Component {
     return (
       <>
         <Searchbar onSubmit={searchImage} />
-        <ImageGallery images={images} onImageClick={onImageClick} />
+        {Boolean(images.length) && <ImageGallery images={images} onImageClick={onImageClick} />}
         {loading && <Loader/>}
-        {Boolean(images.length) && (
+        {(Boolean(images.length) && !loading) && (
           <Button loadMore={loadMore}>Load more</Button>
         )}
         {showModal && (
